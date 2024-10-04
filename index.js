@@ -13,12 +13,13 @@ const Image = require("./model/imageModel")
 const app = express();
 
 app.use(express.json());
-app.use(cors(
-    {
-        origin: 'http://localhost:3000', // Your frontend's URL
-        credentials: true // Allow cookies and credentials to be sent across domains
-    }
-));
+app.use(cors({
+    origin: [
+        'http://localhost:3000', // Your local frontend URL
+        'https://eco-front-five.vercel.app/' // Your deployed frontend URL
+    ],
+    credentials: true // Allow cookies and credentials to be sent across domains
+}));
 
 const PORT = 5000;
 
