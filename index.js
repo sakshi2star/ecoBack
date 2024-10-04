@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 const Counter = require("./model/counterModel");
 const User = require("./model/signUpModel");
@@ -34,7 +35,7 @@ if (!fs.existsSync(uploadDir)) {
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://sakshinakrani233:0THEQGeIFvkfWVaJ@cluster0.yqmgv.mongodb.net')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('Connected to MongoDB');
     })
@@ -88,7 +89,7 @@ app.post('/signup', async (req, res) => {
         };
 
         // Sign the JWT token
-        const token = jwt.sign(data, 'secret_ecom', { expiresIn: '1h' }); // Optional: set expiration time for the token
+        const token = jwt.sign(data, process.env.JWT_SECRET, { expiresIn: '1h' }); // Optional: set expiration time for the token
 
         // Send response back to client
         res.status(201).json({ success: true, token, message: 'User created successfully' });
@@ -117,7 +118,7 @@ app.post('/login', async (req, res) => {
     }
   
     // Generate token
-    const token = jwt.sign({ user: { id: user._id } }, 'secret_ecom', { expiresIn: '1h' });
+    const token = jwt.sign({ user: { id: user._id } }, process.env.JWT_SECRET, { expiresIn: '1h' });
   
     // Return success response with the token
     return res.status(200).json({ message: 'Login successful', token });
