@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+logs/
+*.log
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+out/
+
+# Optional dependency directories
+jspm_packages/
+
+# Temporary files
+tmp/
+temp/
+
+# IDE specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Package lock files (if you want to use only package.json for version control)
+# package-lock.json
+# yarn.lock
+
+# Other files
+*.tgz
+*.gz
