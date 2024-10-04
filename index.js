@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors({
     origin: [
         'http://localhost:3000', // Your local frontend URL
-        'https://eco-front-five.vercel.app/' // Your deployed frontend URL
+        'https://eco-front-five.vercel.app' // Your deployed frontend URL
     ],
     credentials: true // Allow cookies and credentials to be sent across domains
 }));
